@@ -61,6 +61,12 @@ async function run() {
             res.send(result);
         });
 
+        app.get('/superuser/all-skills', async (req, res) => {
+            const query = {};
+            const result = await skillsCollection.find(query).toArray(); // Limit to the first 3 documents
+            res.send(result);
+        });
+
         app.get('/superuser/admin/skills', async (req, res) => {
             const query = {};
             const result = await skillsCollection.find(query).toArray(); // Limit to the first 3 documents
