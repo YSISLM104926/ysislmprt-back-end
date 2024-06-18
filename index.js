@@ -107,12 +107,12 @@ async function run() {
                 const page = parseInt(req.query.page) || 1; // Get the requested page number from query params
                 const perPage = 5; // Number of items per page
                 const startIndex = (page - 1) * perPage;
-
+                const sortOptions = { value: -1 };
                 // Fetch total count of documents
                 const totalDocuments = await skillsCollection.countDocuments();
 
                 // Fetch paginated documents
-                const results = await skillsCollection.find().skip(startIndex).limit(perPage).toArray();
+                const results = await skillsCollection.find().sort(sortOptions).skip(startIndex).limit(perPage).toArray();
 
                 res.json({
                     data: results,
