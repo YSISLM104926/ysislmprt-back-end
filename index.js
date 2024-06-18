@@ -57,19 +57,22 @@ async function run() {
 
         app.get('/superuser/skills', async (req, res) => {
             const query = {};
-            const result = await skillsCollection.find(query).limit(3).toArray(); // Limit to the first 3 documents
+            const sortOptions = { value: -1 };
+            const result = await skillsCollection.find(query).sort(sortOptions).limit(3).toArray(); // Limit to the first 3 documents
             res.send(result);
         });
 
         app.get('/superuser/all-skills', async (req, res) => {
             const query = {};
-            const result = await skillsCollection.find(query).toArray(); // Limit to the first 3 documents
+            const sortOptions = { value: -1 };
+            const result = await skillsCollection.find(query).sort(sortOptions).toArray(); // Limit to the first 3 documents
             res.send(result);
         });
 
         app.get('/superuser/admin/skills', async (req, res) => {
             const query = {};
-            const result = await skillsCollection.find(query).toArray(); // Limit to the first 3 documents
+            const sortOptions = { value: -1 };
+            const result = await skillsCollection.find(query).sort(sortOptions ).toArray(); // Limit to the first 3 documents
             res.send(result);
 
         });
